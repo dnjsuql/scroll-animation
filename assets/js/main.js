@@ -1,4 +1,4 @@
-var CommonAnimationDirection = (function() {
+const CommonAnimationDirection = (function() {
 
   var init = function () {
     if ($('[data-animation="active"]').length < 1) {
@@ -9,19 +9,58 @@ var CommonAnimationDirection = (function() {
 
   var action = function () {
 
-    var controller = new ScrollMagic.Controller();
-    var active = 'active'
-    var bottom = $('[data-animation="bottom"]')
-    for(var i = 0; i < bottom.length; i++) {
+    const controller = new ScrollMagic.Controller();
+    const active = 'active'
+
+    const left = $('[data-animation="left"]')
+    for(let i = 0; i < left.length; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: left[i],
+        offset: 0,
+        triggerHook: 0.7,
+        reverse: false
+      })
+      .on('start', function(e) {
+        left.each(function(){
+          const delay = $(this).data('animation-delay') / 1000;
+          $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
+        })
+      })
+      .setClassToggle(left[i], active)
+      .addIndicators({ name: 'left' })
+      .addTo(controller);
+    }
+
+    const right = $('[data-animation="right"]')
+    for(let i = 0; i < right.length; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: right[i],
+        offset: 0,
+        triggerHook: 0.7,
+        reverse: false
+      })
+      .on('start', function(e) {
+        right.each(function(){
+          const delay = $(this).data('animation-delay') / 1000;
+          $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
+        })
+      })
+      .setClassToggle(right[i], active)
+      .addIndicators({ name: 'right' })
+      .addTo(controller);
+    }
+
+    const bottom = $('[data-animation="bottom"]')
+    for(let i = 0; i < bottom.length; i++) {
       new ScrollMagic.Scene({
         triggerElement: bottom[i],
-        offset: -150,
+        offset: 0,
         triggerHook: 0.7,
         reverse: false
       })
       .on('start', function(e) {
         bottom.each(function(){
-          var delay = $(this).data('animation-delay') / 1000;
+          const delay = $(this).data('animation-delay') / 1000;
           $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
         })
       })

@@ -51,7 +51,7 @@ const CommonAnimationDirection = (function() {
       .addTo(controller);
     }
 
-    const bottom = $('[data-animation="bottom"]')
+    const bottom = document.querySelectorAll('[data-animation="bottom"]');
     for(let i = 0; i < bottom.length; i++) {
       new ScrollMagic.Scene({
         triggerElement: bottom[i],
@@ -60,9 +60,9 @@ const CommonAnimationDirection = (function() {
         reverse: false
       })
       .on('start', function(e) {
-        bottom.each(function(){
-          const delay = $(this).data('animation-delay') / 1000;
-          $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
+        bottom.forEach(function(item, index){
+          const delay = bottom[index].dataset.animationDelay / 1000;
+          bottom[index].style.transition = 'all ' + delay + 's' + ' ease-out'
         })
       })
       .setClassToggle(bottom[i], active)
@@ -75,6 +75,6 @@ const CommonAnimationDirection = (function() {
   };
 })();
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function(){
   CommonAnimationDirection.init();
 });

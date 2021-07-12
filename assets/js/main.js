@@ -1,6 +1,6 @@
-const CommonAnimationDirection = (function() {
+const CommonAnimationDirection = (() => {
 
-  const init = function () {
+  const init = () => {
     const animationActive = document.querySelector('[data-animation="active"]');
     if (animationActive.length < 1) {
       return;
@@ -8,8 +8,7 @@ const CommonAnimationDirection = (function() {
     action();
   }
 
-  const action = function () {
-
+  const action = () => {
     const controller = new ScrollMagic.Controller();
     const active = 'active'
 
@@ -75,6 +74,6 @@ const CommonAnimationDirection = (function() {
   };
 })();
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", () => {
   CommonAnimationDirection.init();
 });

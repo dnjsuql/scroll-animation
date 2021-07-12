@@ -59,9 +59,9 @@ const CommonAnimationDirection = (function() {
         triggerHook: 0.7,
         reverse: false
       })
-      .on('start', function(e) {
-        bottom.forEach(function(item, index){
-          const delay = bottom[index].dataset.animationDelay / 1000;
+      .on('start', () => {
+        bottom.forEach((item, index) => {
+          let delay = bottom[index].dataset.animationDelay / 1000;
           bottom[index].style.transition = 'all ' + delay + 's' + ' ease-out'
         })
       })

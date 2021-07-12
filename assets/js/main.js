@@ -1,13 +1,14 @@
 const CommonAnimationDirection = (function() {
 
-  var init = function () {
-    if ($('[data-animation="active"]').length < 1) {
+  const init = function () {
+    const animationActive = document.querySelector('[data-animation="active"]');
+    if (animationActive.length < 1) {
       return;
     }
     action();
   }
 
-  var action = function () {
+  const action = function () {
 
     const controller = new ScrollMagic.Controller();
     const active = 'active'

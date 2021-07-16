@@ -12,6 +12,29 @@ const CommonAnimationDirection = (() => {
     const controller = new ScrollMagic.Controller();
     const active = 'active'
 
+    const top = document.querySelectorAll('[data-animation="top"]');
+    for(let i = 0; i < top.length; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: top[i],
+        offset: 0,
+        triggerHook: 0.7,
+        reverse: false
+      })
+      .on('start', () => {
+        const delay = top[i].dataset.animationDelay / 1000;
+        const effect = top[i].dataset.animationEffect
+        if(effect === undefined){
+          top[i].style.transition = 'all ' + delay + 's ' + 'ease-in-out'; // effect 미입력 시, ease-in-out 효과 기본값
+        } else {
+          top[i].style.transition = 'all ' + delay + 's ' + effect
+        }
+      })
+      .setClassToggle(top[i], active)
+      .addIndicators({ name: 'top' })
+      .addTo(controller);
+    }
+
+
     const left = document.querySelectorAll('[data-animation="left"]');
     for(let i = 0; i < left.length; i++) {
       new ScrollMagic.Scene({

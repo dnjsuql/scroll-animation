@@ -31,24 +31,24 @@ const CommonAnimationDirection = (() => {
     //   .addTo(controller);
     // }
 
-    // const right = $('[data-animation="right"]')
-    // for(let i = 0; i < right.length; i++) {
-    //   new ScrollMagic.Scene({
-    //     triggerElement: right[i],
-    //     offset: 0,
-    //     triggerHook: 0.7,
-    //     reverse: false
-    //   })
-    //   .on('start', function(e) {
-    //     right.each(function(){
-    //       const delay = $(this).data('animation-delay') / 1000;
-    //       $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
-    //     })
-    //   })
-    //   .setClassToggle(right[i], active)
-    //   .addIndicators({ name: 'right' })
-    //   .addTo(controller);
-    // }
+    const right = document.querySelectorAll('[data-animation="right"]');
+    for(let i = 0; i < right.length; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: right[i],
+        offset: 0,
+        triggerHook: 0.7,
+        reverse: false
+      })
+      .on('start', () => {
+        right.forEach((item, index) => {
+          let delay = right[index].dataset.animationDelay / 1000;
+          right[index].style.transition = 'all ' + delay + 's' + ' ease-out'
+        })
+      })
+      .setClassToggle(right[i], active)
+      .addIndicators({ name: 'right' })
+      .addTo(controller);
+    }
 
     const bottom = document.querySelectorAll('[data-animation="bottom"]');
     for(let i = 0; i < bottom.length; i++) {
@@ -74,7 +74,7 @@ const CommonAnimationDirection = (() => {
   };
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   CommonAnimationDirection.init();
 });
 

@@ -28,25 +28,25 @@
   opacity: 0;
 }
 
-[data-animation='top'].active {
+[data-animation='top'].animation-active {
   -webkit-transform: translateY(0px);
   -ms-transform: translateY(0px);
   transform: translateY(0px);
   opacity: 1;
 }
-[data-animation='left'].active {
+[data-animation='left'].animation-active {
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
   opacity: 1;
 }
-[data-animation='right'].active {
+[data-animation='right'].animation-active {
   -webkit-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px);
   opacity: 1;
 }
-[data-animation='bottom'].active {
+[data-animation='bottom'].animation-active {
   -webkit-transform: translateY(0px);
   -ms-transform: translateY(0px);
   transform: translateY(0);

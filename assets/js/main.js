@@ -10,7 +10,7 @@ const CommonAnimationDirection = (() => {
 
   const action = () => {
     const controller = new ScrollMagic.Controller();
-    const active = 'active'
+    const active = 'animation-active'
 
     const top = document.querySelectorAll('[data-animation="top"]');
     for(let i = 0; i < top.length; i++) {

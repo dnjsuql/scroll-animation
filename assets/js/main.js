@@ -21,10 +21,13 @@ const CommonAnimationDirection = (() => {
         reverse: false
       })
       .on('start', () => {
-        left.forEach((item, index) => {
-          let delay = left[index].dataset.animationDelay / 1000;
-          left[index].style.transition = 'all ' + delay + 's' + ' ease-out'
-        })
+        const delay = left[i].dataset.animationDelay / 1000;
+        const effect = left[i].dataset.animationEffect
+        if(effect === undefined){
+          left[i].style.transition = 'all ' + delay + 's ' + 'ease-in-out'; // effect 미입력 시, ease-in-out 효과 기본값
+        } else {
+          left[i].style.transition = 'all ' + delay + 's ' + effect
+        }
       })
       .setClassToggle(left[i], active)
       .addIndicators({ name: 'left' })
@@ -40,10 +43,13 @@ const CommonAnimationDirection = (() => {
         reverse: false
       })
       .on('start', () => {
-        right.forEach((item, index) => {
-          let delay = right[index].dataset.animationDelay / 1000;
-          right[index].style.transition = 'all ' + delay + 's' + ' ease-out'
-        })
+        const delay = right[i].dataset.animationDelay / 1000;
+        const effect = right[i].dataset.animationEffect
+        if(effect === undefined){
+          right[i].style.transition = 'all ' + delay + 's ' + 'ease-in-out'; // effect 미입력 시, ease-in-out 효과 기본값
+        } else {
+          right[i].style.transition = 'all ' + delay + 's ' + effect
+        }
       })
       .setClassToggle(right[i], active)
       .addIndicators({ name: 'right' })
@@ -59,10 +65,13 @@ const CommonAnimationDirection = (() => {
         reverse: false
       })
       .on('start', () => {
-        bottom.forEach((item, index) => {
-          let delay = bottom[index].dataset.animationDelay / 1000;
-          bottom[index].style.transition = 'all ' + delay + 's' + ' ease-out'
-        })
+        const delay = bottom[i].dataset.animationDelay / 1000;
+        const effect = bottom[i].dataset.animationEffect
+        if(effect === undefined){
+          bottom[i].style.transition = 'all ' + delay + 's ' + 'ease-in-out'; // effect 미입력 시, ease-in-out 효과 기본값
+        } else {
+          bottom[i].style.transition = 'all ' + delay + 's ' + effect
+        }
       })
       .setClassToggle(bottom[i], active)
       .addIndicators({ name: 'bottom' })

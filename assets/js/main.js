@@ -12,24 +12,24 @@ const CommonAnimationDirection = (() => {
     const controller = new ScrollMagic.Controller();
     const active = 'active'
 
-    // const left = $('[data-animation="left"]')
-    // for(let i = 0; i < left.length; i++) {
-    //   new ScrollMagic.Scene({
-    //     triggerElement: left[i],
-    //     offset: 0,
-    //     triggerHook: 0.7,
-    //     reverse: false
-    //   })
-    //   .on('start', function(e) {
-    //     left.each(function(){
-    //       const delay = $(this).data('animation-delay') / 1000;
-    //       $(this).css({transition : 'all ' + delay + 's' + ' ease-out'})
-    //     })
-    //   })
-    //   .setClassToggle(left[i], active)
-    //   .addIndicators({ name: 'left' })
-    //   .addTo(controller);
-    // }
+    const left = document.querySelectorAll('[data-animation="left"]');
+    for(let i = 0; i < left.length; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: left[i],
+        offset: 0,
+        triggerHook: 0.7,
+        reverse: false
+      })
+      .on('start', () => {
+        left.forEach((item, index) => {
+          let delay = left[index].dataset.animationDelay / 1000;
+          left[index].style.transition = 'all ' + delay + 's' + ' ease-out'
+        })
+      })
+      .setClassToggle(left[i], active)
+      .addIndicators({ name: 'left' })
+      .addTo(controller);
+    }
 
     const right = document.querySelectorAll('[data-animation="right"]');
     for(let i = 0; i < right.length; i++) {

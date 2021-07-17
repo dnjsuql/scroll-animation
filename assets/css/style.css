@@ -75,3 +75,8 @@
 .section--navy {
   background-color: navy;
 }
+
+.text {
+  font-size: 64px;
+  color: #fff;
+}

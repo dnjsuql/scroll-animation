@@ -106,6 +106,10 @@ const CommonAnimationDirection = (() => {
   };
 })();
 
+const ParallaxAnimataion = (() => {
+
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   CommonAnimationDirection.init();
 });
